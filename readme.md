@@ -12,6 +12,29 @@ Automated AWS & EKS Security Audit Tool based on SK Shieldus Cloud Security Guid
 이 프로젝트는 복잡한 클라우드 보안 점검을 단 한 번의 스크립트 실행으로 자동화하는 도구입니다.
 IAM(계정), Network(방화벽), Data(암호화), EKS(컨테이너) 등 핵심 보안 영역을 전수 조사하여, 경영진 보고용 요약 리포트와 실무자용 상세 리포트를 자동으로 생성합니다.
 
+graph TD
+    User[ 보안 담당자 ] -->|1. 실행 (Run Script)| MasterScript[🛡️ Master Audit Tool]
+    
+    subgraph "Audit Process"
+        MasterScript -->|2. IAM 점검| IAM[🔐 IAM Audit<br>(Keys, MFA)]
+        MasterScript -->|3. 네트워크 점검| VPC[🌐 Network Audit<br>(SG, NACL, RT)]
+        MasterScript -->|4. 데이터 점검| Data[💾 Data Protection<br>(Encryption, Policy)]
+        MasterScript -->|5. 컨테이너 점검| EKS[☸️ EKS Security<br>(Prowler Integration)]
+    end
+    
+    subgraph "AWS Cloud"
+        IAM -.->|Read API| AWS_IAM[AWS IAM]
+        VPC -.->|Read API| AWS_EC2[AWS EC2/VPC]
+        Data -.->|Read API| AWS_S3_RDS[S3 / RDS / EBS]
+        EKS -.->|kubectl / API| K8s_Cluster[EKS Cluster]
+    end
+    
+    MasterScript -->|6. 리포트 생성| Report[📄 Final Executive Report<br>(Markdown / HTML)]
+    
+    style MasterScript fill:#f9f,stroke:#333,stroke-width:4px
+    style Report fill:#bbf,stroke:#333,stroke-width:2px
+
+
 🌟 핵심 특징 (Key Features)
 
 Zero Impact (무중단): Read-Only API만 사용하여 운영 중인 서비스에 영향을 주지 않습니다.
