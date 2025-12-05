@@ -1,6 +1,6 @@
 🛡️ AWS Integrated Security Audit Tool (v13)
 
-SK쉴더스(SK Shieldus) 클라우드 보안 가이드라인(2024) 기반의 AWS 인프라 및 EKS 통합 보안 진단 자동화 도구입니다.
+[SK쉴더스(SK Shieldus) 클라우드 보안 가이드라인(2024)](https://www.skshieldus.com/uploads/files/20240416/20240416180036051.pdf) 를 기반으로 개인이 직접 제작한 AWS 인프라 및 EKS 통합 보안 진단 자동화 도구입니다.
 
 Automated AWS & EKS Security Audit Tool based on SK Shieldus Cloud Security Guidelines (2024).
 
