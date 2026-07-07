@@ -324,22 +324,3 @@ if [ -n "$CLUSTERS" ]; then
 fi
 
 echo "✅ 완료! 👉 $FINAL_REPORT"
-```
-
-### 💡 리포트 확인 (S3 정책 부분)
-
-생성된 `3_Data_Protection.md` 파일을 열어보시면, 하단에 아래와 같이 **정책 내용이 포함**되어 나옵니다. (`<details>` 태그 덕분에 클릭하면 내용이 펼쳐집니다.)
-
-```markdown
-### 3.4 S3 버킷 정책 상세 내용 (Attached Policies)
-
-<details><summary><strong>my-bucket-01 정책 보기</strong></summary>
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [...]
-}
-```
-</details>
-```
