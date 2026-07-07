@@ -83,8 +83,8 @@ pip install prowler
 ### 3.2 How to Run
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_ID/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/saranf/aws_security_helping_script.git
+cd aws_security_helping_script
 
 # 2. Configure AWS credentials (read-only permissions required)
 aws configure
@@ -104,6 +104,31 @@ A timestamped folder `Total_Audit_Result_YYYYMMDD` is created:
 | `2_Network_Security.md` | Network security details |
 | `3_Data_Protection.md` | Data encryption details (incl. S3 policies) |
 | `5_EKS_Audit_All/` | Detailed EKS reports per cluster |
+
+## 5. Required AWS Permissions
+This tool is designed for **read-only** audit usage. The following permissions are recommended:
+
+```text
+iam:ListUsers
+iam:ListAccessKeys
+iam:ListMFADevices
+iam:GetLoginProfile
+ec2:DescribeSecurityGroups
+ec2:DescribeNetworkInterfaces
+ec2:DescribeNetworkAcls
+ec2:DescribeRouteTables
+ec2:DescribeVolumes
+ec2:DescribeInstances
+rds:DescribeDBInstances
+s3:ListAllMyBuckets
+s3:GetBucketEncryption
+s3:GetBucketPolicy
+s3:GetPublicAccessBlock
+eks:ListClusters
+eks:DescribeCluster
+```
+
+> 💡 The AWS managed policy `SecurityAudit` (or `ReadOnlyAccess`) covers all of the above.
 
 ## ⚠️ Disclaimer
 This tool is for auditing purposes only. It does **not** modify any resources.

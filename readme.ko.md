@@ -82,8 +82,8 @@ pip install prowler
 ### 3.2 실행 방법 (How to Run)
 ```bash
 # 1. 리포지토리 다운로드
-git clone https://github.com/YOUR_ID/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/saranf/aws_security_helping_script.git
+cd aws_security_helping_script
 
 # 2. AWS 인증 설정 (조회 권한 필요)
 aws configure
@@ -103,6 +103,31 @@ chmod +x master_audit_v13.sh
 | `2_Network_Security.md` | 네트워크 보안 상세 결과 |
 | `3_Data_Protection.md` | 데이터 암호화 상세 결과 (S3 정책 포함) |
 | `5_EKS_Audit_All/` | EKS 클러스터별 상세 진단 결과 폴더 |
+
+## 5. 필요 AWS 권한 (Required AWS Permissions)
+이 도구는 **조회(Read-Only)** 전용입니다. 아래 권한을 권장합니다.
+
+```text
+iam:ListUsers
+iam:ListAccessKeys
+iam:ListMFADevices
+iam:GetLoginProfile
+ec2:DescribeSecurityGroups
+ec2:DescribeNetworkInterfaces
+ec2:DescribeNetworkAcls
+ec2:DescribeRouteTables
+ec2:DescribeVolumes
+ec2:DescribeInstances
+rds:DescribeDBInstances
+s3:ListAllMyBuckets
+s3:GetBucketEncryption
+s3:GetBucketPolicy
+s3:GetPublicAccessBlock
+eks:ListClusters
+eks:DescribeCluster
+```
+
+> 💡 AWS 관리형 정책 `SecurityAudit`(또는 `ReadOnlyAccess`)를 붙이면 위 권한이 모두 포함됩니다.
 
 ## ⚠️ 주의 사항 (Disclaimer)
 이 도구는 진단(감사) 목적으로만 사용됩니다. 어떠한 리소스도 변경하지 않습니다.
